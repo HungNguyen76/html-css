@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML CSS</title>
+    <link rel="stylesheet" href="./main.css">
+    <style>
+        /* font-size: 100% trong html mặc định là 16px */
+        html,
+        body {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .boX {
+            /* % sẽ phụ thuộc vào thẻ chứa nó */
+            /* 50% la 50% kich thuoc cua body */
+            width: 50%;
+            height: 100px;
+            background-color: red;
+        }
+
+        /* rem phụ thuộc vào font-size được định nghĩa trong thẻ html */
+        h1 {
+            font-size: 1rem;
+        }
+
+        /* em phụ thuộc vào thẻ gần nhất chứa nó mà có thuộc tính font-size */
+        h2 {
+            font-size: 1em;
+        }
+
+        /* vw - width : độ rộng màn hình, vh - height: độ dài màn hình
+            50vw = 50% rộng màn hình, 50vh = 50% độ dài màn hình
+        viewport */
+        .box1 {
+            background-color: #333;
+        }
+
+        .box2 {
+            background-color: orange;
+            margin-bottom: 20px;
+            /* margin không là lớp bao bọc toàn bộ element, 
+            chỉ là khoảng cách đẩy ra từ element */
+        }
+
+        .box3 {
+            background-color: firebrick;
+            padding: 10px 12px 8px;
+            /* 10px:top 12px:right 8px:bottom 12px:left */
+            border-top-width: 10px;
+            border-right-width: 0;
+            border-left-width: 0;
+            border-bottom-width: 0;
+            border-style: solid;
+            border-color: #333;
+            /* cả border và padding đều làm tăng tổng kích thước của element */
+        }
+
+        .box {
+            width: 60px;
+            height: 60px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box-sizing {
+            width: 150px;
+            height: 150px;
+            color: #fff;
+            background-color: darkorchid;
+            padding: 16px;
+            border: 2px solid #333;
+            box-sizing: border-box;
+            /* sẽ tự tính toán kích thước border padding content
+             để vừa đủ 100px như khai báo ban đầu  */
+        }
+        .background-clip {
+            width: 100%;
+            height: 100px;
+            background-color: #333;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 10px dashed #ccc;
+            background-clip: border-box;
+        }
+        .background-img {
+            width: 100%;
+            height: 100vh;
+            /* background-image: linear-gradient(0, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
+            url('https://thuthuatnhanh.com/wp-content/uploads/2018/07/anh-girl-xinh-gai-dep.jpg'); */
+            background-repeat: no-repeat;
+            background-size: contain;
+            border: 20px dashed #ccc;
+            padding: 20px;
+            background-origin: padding-box;
+            /* đổ border từ padding vào */
+            background-position: 50px;
+            /* cách trái 50px, trên dưới center mặc định */
+        }
+        a::after {
+            content: "("attr(href)")"
+        }
+        a:active {
+            color: red;
+        }
+        .pseudo-ele {
+            width: 100%;
+            height: 120px;
+            background: rgb(190,124,157)
+        }
+        .pseudo-ele::before {
+            content: "";
+            display: block;
+            /* mặc định thẻ div được gán display: block rồi
+                còn pseudo-elements giả phải thêm display: block vô
+            */
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+        }
+        .pseudo-ele::after {
+            content: "xin chao";
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+        }
+        h2::first-letter {
+            font-size: 40px;
+        }
+        h1::selection {
+            background-color: violet;
+        }
+        h2 {
+            position: relative;
+            top: 10px;
+            left: 10px;
+            /* relative là vị trí tương đối, lấy chính mình làm gốc toạ độ, ko phụ thuộc elements nào khác */
+            /* thuộc tính top left right bottom chỉ hoạt động khi có position */
+        }
+        /* li:nth-of-type(2) {
+            color: violet   
+        } */
+        .box-parent {
+            width: 100%;
+            height: 120px;
+            background-color: #333;
+            position: relative
+        }
+        .box-child {
+            /* width: 50px; nếu không đặt width height mà có đủ top0 left:0 right:0 bottom:0, 
+            thẻ con sẽ phủ hết nguyên thẻ cha
+            height: 50px; */
+            background-color: rgba(255,255,255,0.5);
+            position: absolute;
+            /* absolute sẽ lấy thẻ cha gần nhất có position làm gốc toạ độ 
+            (cho dù là absolute hay relative) */
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Thành phần giao diện thường gặp của Website</h2>
+    <ul>
+        <li>Header (đầu trang)</li>
+        <li>Navigation (điều hướng)</li>
+        <li>Breadcrumb</li>
+        <li>Sidebar</li>
+        <li>Content (nội dung)</li>
+        <li>Banner</li>
+        <li>Slider(img)</li>
+        <li>Footer (chân trang)</li>
+    </ul>
+    
+    <div class="box-parent">A nhon haseyo
+        <div class="box-child">
+
+        </div>
+    </div>
+    <h2>Position</h2>
+    <ul>
+        <li>Relative</li>
+        <li>Absolute</li>
+        <li>Fixed</li>
+        <li>Sticky</li>
+    </ul>
+    <hr />
+    <div class="pseudo-ele"></div>
+    <h2>CSS pseudo-elements</h2>
+    <ul>
+        <li>::before</li>
+        <li>::after</li>
+        <li>::first-letter</li>
+        <li>::first-line</li>
+        <li>::selection</li>
+    </ul>
+    <hr />
+    <h2>CSS pseudo-classes</h2>
+    <ul>
+        <li>:root</li>
+        <li>:hover</li>
+        <li>:active</li>
+        <li>:first-child</li>
+        <li>:last-child</li>
+    </ul>
+    <hr />
+    <h2>CSS functions</h2>
+    <a href="https://fullstack.edu.vn">Học Lập Trình</a>
+    <ul>
+        <li>var()</li>
+        <li>linear-gradient()</li>
+        <li>rgba()</li>
+        <li>rgb()</li>
+        <li>calc()</li>
+        <li>attr()</li>
+    </ul>
+    <hr />
+    <div class="background-img"></div>
+    <hr />
+    <h2>Backround-clip</h2>
+    <div class="background-clip"></div>
+    <hr />
+
+    <h2>Box sizing</h2>
+    <div class="box-sizing">
+        Đây là nội dung bài viết
+    </div>
+    <hr />
+    <div class="boX"></div>
+    <div>
+        <h1>Priority ?</h1>
+        <ol>
+            <li>Internal, External?</li>
+            <li>Inline - 1000</li>
+            <li>#id - 100</li>
+            <li>.class - 10</li>
+            <li>tag - 1</li>
+            <li>Equal specificity?</li>
+            <li>Universal selector and inherited</li>
+        </ol>
+    </div>
+    <h1>CSS variable?</h1>
+    <hr />
+    <div>
+        <h1>CSS units?</h1>
+        <h2>1. Absolute units?</h2>
+        <ul>
+            <li>px</li>
+            <li>pt</li>
+            <li>cm</li>
+            <li>mm</li>
+            <li>inch</li>
+            <li>pc</li>
+        </ul>
+        <h2>2. Relative units?</h2>
+        <ul>
+            <li>%</li>
+            <li>rem</li>
+            <li>em</li>
+            <li>vw</li>
+            <li>vh</li>
+            <li>vmin</li>
+            <li>vmax</li>
+            <li>ex</li>
+            <li>ch</li>
+        </ul>
+        <hr />
+        <h2>margin padding border</h2>
+        <div class="box box1">Box 1</div>
+        <div class="box box2">Box 2</div>
+        <div class="box box3">Box 3</div>
+        <hr />
+
+    </div>
+</body>
+
+</html>

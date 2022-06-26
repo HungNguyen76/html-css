@@ -1,0 +1,11 @@
+/* Kỹ thuật đặtt biến trong css */
+/* công dụng chỉ cần sửa 1 nơi, áp dụng mọi nơi trong css */
+:root {
+    --text-color: red;
+}
+
+h1 {
+    /* --my-color là biến cục bộ */
+    --my-color: green; 
+    color: var(--my-color);
+}
